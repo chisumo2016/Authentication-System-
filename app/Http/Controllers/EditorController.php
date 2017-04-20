@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class EditorController extends Controller
 {
+    //
     /**
      * Create a new controller instance.
      *
@@ -14,16 +15,16 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->middleware('admin');
+        $this->middleware('editor',['except'=> 'test']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin.home');
+        return view('admin.editor');
+    }
+
+    public function  test()
+    {
+        return view('admin.test');
     }
 }

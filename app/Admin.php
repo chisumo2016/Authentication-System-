@@ -11,6 +11,15 @@ class Admin extends Authenticatable
     use Notifiable;
 
 
+    //Relationship
+
+    public function role()
+    {
+        //return $this->belongsToMany('App\Role');
+        return $this->belongsToMany(role::class, 'role_admins');
+    }
+
+
     /**
      * Send the password reset notification.
      *
